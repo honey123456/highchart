@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>3d pie chart</title>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+ <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-sm-10 col-md-10">
+<div id="container1"></div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+Highcharts.chart('container1', {
+    chart: {
+        type: 'pie',
+		        options3d: {
+            enabled: true,
+            alpha: 45
+        }
+    },
+    title: {
+        text: 'Contents of Daily performance'
+    },
+    subtitle: {
+        text: '3D donut in Highcharts'
+    },
+    plotOptions: {
+        pie: {
+            innerSize: 100,
+            depth: 45
+        }
+    },
+    series: [{
+        name: 'Daily perfomance in per',
+        data: [
+            ['honey', 8],
+            ['Abhi', 3],
+            ['Meet', 1],
+            ['Purvaj', 6],
+            ['Harsh', 8],
+            ['Samkit', 4],
+            ['Deep', 4],
+            ['Yash', 1],
+            ['Other', 1]
+        ]
+    }]
+});
+</script>
+</body>
+</html>
