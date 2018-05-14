@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>highchartex</title>
+</head>
+<body>
+<json>
+[{"data":[326978158],"name":"Excl_Splash","time":"2016-03-01"},{"data":[54796390],"name":"Splash","time":"2016-03-01"},{"data":[344798330],"name":"Excl_Splash","time":"2016-04-01"},{"data":[59778309],"name":"Splash","time":"2016-04-01"},{"data":[358185573],"name":"Excl_Splash","time":"2016-05-01"},{"data":[63700566],"name":"Splash","time":"2016-05-01"},{"data":[352688360],"name":"Excl_Splash","time":"2016-06-01"},{"data":[68822877],"name":"Splash","time":"2016-06-01"},{"data":[353699748],"name":"Excl_Splash","time":"2016-07-01"},{"data":[75092301],"name":"Splash","time":"2016-07-01"},{"data":[342876795],"name":"Excl_Splash","time":"2016-08-01"},{"data":[80553501],"name":"Splash","time":"2016-08-01"},{"data":[329543232],"name":"Excl_Splash","time":"2016-09-01"},{"data":[84571245],"name":"Splash","time":"2016-09-01"},{"data":[333080061],"name":"Excl_Splash","time":"2016-10-01"},{"data":[92084128],"name":"Splash","time":"2016-10-01"},{"data":[319192787],"name":"Excl_Splash","time":"2016-11-01"},{"data":[92971575],"name":"Splash","time":"2016-11-01"},{"data":[347671803],"name":"Excl_Splash","time":"2016-12-01"},{"data":[97767328],"name":"Splash","time":"2016-12-01"},{"data":[286103288],"name":"Excl_Splash","time":"2017-01-01"},{"data":[92912586],"name":"Splash","time":"2017-01-01"},{"data":[267796633],"name":"Excl_Splash","time":"2017-02-01"},{"data":[92767994],"name":"Splash","time":"2017-02-01"},{"data":[302103577],"name":"Excl_Splash","time":"2017-03-01"},{"data":[109343911],"name":"Splash","time":"2017-03-01"}]
+</json>
+
+    <!-- jQuery -->
+ <script src="{% static "js/jquery.js" %}"></script>
+
+ <!-- Bootstrap Core JavaScript -->
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+
+<style>
+    body{
+    margin: 30px;
+    margin-left:40px;
+    }
+</style>
+
+<script type="text/javascript">
+        $(function () {
+                var processed_json = new Array();
+                $.getJSON('http://191.0.0.0:8000/api/monthlyytd', function(data) {
+                    // Populate series
+                    for (i = 0; i < data.length; i++){
+                        processed_json.push([data[i].key, data[i].value]);
+                    }
+
+                    // draw chart
+                    $('#container').highcharts({
+                    chart: {
+                        type: "column"
+                    },
+                    title: {
+                        text: "SPLASH TRANSACTIONS"
+                    },
+                    xAxis: {
+                        type: 'category',
+                        allowDecimals: false,
+                        title: {
+                            text: "time"
+                        }
+                    },
+                    yAxis: {
+                        title: {
+                            text: "name"
+                        }
+                    },
+                    series: [{
+                          name: 'data',
+                        data: processed_json
+                    }]
+                });
+            });
+        });
+        console.log(data[1]);
+</script>
+
+<div id="container"></div>
+</body>
+</html>
