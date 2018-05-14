@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>reverse example</title>
+<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+	<div id='app'>
+  <h1>Trying out Vue.js</h1>
+ <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Reverse Message</button>
+</div>
+
+<script>
+	var app= new Vue({
+  el: '#app',
+  data: {
+    message: "Laura is awesome!"
+  },
+  methods: {
+    reverseMessage: function() {
+      this.message = this.message.split('').reverse().join('')
+    }
+  }
+})
+</script>
+</body>
+</html>
