@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Sell product</title>
+<title>Employee Detail</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -21,10 +21,10 @@ Highcharts.chart('container', {
         type: 'column'
     },
     title: {
-        text: 'Sell Product'
+        text: 'Employee Schedule'
     },
     subtitle: {
-        text: 'Electronics'
+        text: 'Data in Hours'
     },
     xAxis: {
         categories: [
@@ -64,20 +64,16 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Mobiles',
-        data: [49, 71, 106, 129, 144, 176, 135, 148, 216, 194, 95, 54]
+        name: 'LunchTIme',
+        data: [1, 1, 1.5, 1.5, 2, 1, 1.5, 1, 1, 1.5, 2, 1.5]
 
     }, {
-        name: 'Laptop',
-        data: [83, 78, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
+        name: 'Meeting-time',
+        data: [1, 1.5, 2, 0.5, 0.5,1, 1.5, 2, 1.5, 2, 1.5, 0.5]
 
     }, {
-        name: 'accessories',
-        data: [48, 38, 39, 41, 47, 48, 59, 59, 52, 65, 59, 51]
-
-    }, {
-        name: 'Electronics',
-        data: [42, 33, 34, 39, 52, 75, 57, 60, 47, 39, 46, 51]
+        name: 'Working-Time',
+        data: [7, 8, 9, 6, 7, 8, 8, 6, 7, 8, 5, 6]
 
     }]
 });

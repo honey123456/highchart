@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Data from CSV manual parsing</title>
+		<style>
+		body{
+			margin-top: 30px;
+			margin-left:40px;
+		}
+				pre	{
+		border:1px solid red;
+		}
+
+		</style>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="http://code.highcharts.com/highcharts.js"></script>
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+</head>
+<body>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			var options = {
+				chart: {
+					renderTo: 'container',
+					type: 'column'
+				},
+				title: {
+					text: 'Fruit Consumption'
+				},
+				xAxis: {
+					categories: []
+				},
+				yAxis: {
+					title: {
+						text: 'Units'
+					}
+				},
+				series: []
+			};
+			$.get('data.csv', function(data) {
+				// Split the lines
+				var lines = data.split('\n');
+				$.each(lines, function(lineNo, line) {
+					var items = line.split(',');
+					
+					// header line containes categories
+					if (lineNo == 0) {
+						$.each(items, function(itemNo, item) {
+							if (itemNo > 0) options.xAxis.categories.push(item);
+						});
+					}
+					else {
+						var series = { 
+							data: []
+						};
+						$.each(items, function(itemNo, item) {
+							if (itemNo == 0) {
+								series.name = item;
+							} else {
+								series.data.push(parseFloat(item));
+							}
+						});
+						options.series.push(series);
+					}
+				});
+				var chart = new Highcharts.Chart(options);
+			});
+		});
+	</script>
+	<div style="width: 800px; margin: 2em auto; padding: 1em; border: 1px solid red; border-radius: 0.5em"></div>
+		</body>
+</html>

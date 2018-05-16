@@ -30,8 +30,16 @@ $('#chartTrendsPublicationRankDetailed').highcharts({
         	text: 'Data in Hours'
    			 },
            xAxis: {
-               categories: ['january', 'february', 'march', 'April', 'May', 'June', 'July', 'August', 'sept', 'Oct','November','dec']
+               categories: ['January', 'february', 'march', 'April', 'May', 'June', 'July', 'August', 'septmber', 'Octomber','November','December']
            },
+           tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    		},
            series: JSON.parse(jsonStringReturnByAPI)
 
        });
