@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
+
+$font-12: 12px;
+$font-13: 13px;
+$font-14: 14px;
+$font-15: 15px;
+$font-16: 16px;
+$font-17: 17px;
+$font-18: 18px;
+$font-24: 24px;
+$font-26: 26px;
+$font-28: 28px;
+$font-30: 30px;
+$font-35: 35px;
+
+.white-font{
+  color: $theme-white-color !important;
+}
+.white-bg{
+  background-color: $theme-white-color !important;
+}
+.theme-font{
+  color: $theme-color !important;
+}
+.theme-bg{
+  background-color: $theme-color !important;
+}

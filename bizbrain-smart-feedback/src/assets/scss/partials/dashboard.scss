@@ -1,0 +1,68 @@
+.bsf-row {
+  padding: 16px;
+  background-color: #f8f9fd;
+  .col-md-3{
+    padding: 0 8px;
+  }
+  .col-md-9{
+    padding: 0 8px;
+  }
+}
+
+.bsf-dashboard-sidebar-listing {
+  list-style-type: none;
+  padding: 0 !important;
+  margin: 0;
+  .bsf-label {
+    margin: 10px 0;
+  }
+  h3 {
+    margin: 10px 0 20px;
+  }
+  .mx-datepicker {
+    margin-bottom: 20px;
+  }
+}
+
+.bsf-dashboard-map {
+  width: 100%;
+  height: 150px;
+  background: gray;
+}
+
+.bsf-dashboard-total-feedback {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  height: calc(100vh - 434px);
+  min-height: 400px;
+  overflow-y: auto;
+}
+
+.bsf-vote-categories {
+  height: 32px;
+  width: 32px;
+  background-color: #00a65a;
+  margin: 4px 10px;
+  border-radius: 100%;
+}
+
+.bsf-dashboard-vote-type {
+  margin: 0;
+  padding: 14px;
+}
+
+.bsf-dashboard-vote-time {
+  margin: 0;
+  padding: 14px;
+}
+
+.test {
+  display: inline-block;
+  .a {
+    display: block;
+  }
+  .b {
+    display: block;
+  }
+}
