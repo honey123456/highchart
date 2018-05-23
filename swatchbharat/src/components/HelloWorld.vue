@@ -1,6 +1,62 @@
 <template>
 
 <v-app id="inspire">
+    <v-container grid-list-md>
+        <v-layout row wrap>
+      <v-flex xs12 lg6>
+        <v-menu
+          ref="menu1"
+          :close-on-content-click="false"
+          v-model="menu1"
+          :nudge-right="40"
+          lazy
+          transition="scale-transition"
+          offset-y
+          full-width
+          max-width="290px"
+          min-width="290px"
+        >
+          <v-text-field
+            slot="activator"
+            v-model="dateFormatted"
+            label="Date"
+            hint="MM/DD/YYYY format"
+            persistent-hint
+            prepend-icon="event"
+            @blur="date = parseDate(dateFormatted)"
+          ></v-text-field>
+          <v-date-picker v-model="date" no-title @input="menu1 = false"></v-date-picker>
+        </v-menu>
+        <p>Date in ISO format: <strong>{{ date }}</strong></p>
+      </v-flex>
+
+      <v-flex xs12 lg6>
+        <v-menu
+          :close-on-content-click="false"
+          v-model="menu2"
+          :nudge-right="40"
+          lazy
+          transition="scale-transition"
+          offset-y
+          full-width
+          max-width="290px"
+          min-width="290px"
+        >
+          <v-text-field
+            slot="activator"
+            v-model="computedDateFormatted"
+            label="Date (read only text field)"
+            hint="MM/DD/YYYY format"
+            persistent-hint
+            prepend-icon="event"
+            readonly
+          ></v-text-field>
+          <v-date-picker v-model="date" no-title @input="menu2 = false"></v-date-picker>
+        </v-menu>
+        <p>Date in ISO format: <strong>{{ date }}</strong></p>
+      </v-flex>
+    </v-layout>
+   
     
     
     <v-toolbar
@@ -18,7 +74,6 @@
      
         <v-text>hemraj.desai7007@gmail.com</v-text>
      
-      <v-btn icon>
         <v-icon slot="badge" dark small>done</v-icon>
       <v-icon
         large
@@ -26,7 +81,7 @@
       >
         account_circle
       </v-icon>
-      </v-btn> 
+        
     </v-toolbar>
     <v-btn
       fab
@@ -65,27 +120,41 @@
     <v-menu offset-y>
       <v-btn slot="activator" color="primary" dark>Select-Task</v-btn>
       <v-list>
-        <v-list-tile :key="index" @click="">
+        <v-list-tile :key="index">
           <v-list-tile-title>Coding</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile :key="index" @click="">
+        <v-list-tile :key="index">
           <v-list-tile-title>Testing</v-list-tile-title>
         </v-list-tile>
-        <v-list-tile :key="index" @click="">
+        <v-list-tile :key="index">
           <v-list-tile-title>Database-Connection</v-list-tile-title>
         </v-list-tile>
-         <v-list-tile :key="index" @click="">
+         <v-list-tile :key="index">
           <v-list-tile-title>Design</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
   </div>
+  <v-flex xs6>
+              <v-text-field
+                placeholder="Select-Task"
+              ></v-text-field>
+            </v-flex>
          <v-flex xs12>
               <v-text-field
                 prepend-icon="notes"
                 placeholder="Notes"
               ></v-text-field>
             </v-flex>
+            <v-flex xs6>
+              <v-text-field
+                placeholder="Select-Task"
+              > 
+           
+             <div>
+    <Countdown deadline="August 22, 2022"></Countdown>
+  </div>
+   </v-flex>
           </v-layout>
         </v-container>
         <v-card-actions>
@@ -95,9 +164,10 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    </v-container>
   </v-app>
    </template>
-   
+
 
 <script>
   export default {
